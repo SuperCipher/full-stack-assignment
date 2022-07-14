@@ -1,5 +1,6 @@
 ## Role play assumption
 We are an early stage crypto startup company consisting of 10 people.
+Our strategy is not to out source our development for deeper quality control.
 We have a strong emphasis on Agile, Safety and Factorial growth
 
 ## Repo goal
