@@ -26,9 +26,10 @@ export const useUserGenerator = () => {
       username: faker.internet.userName(),
       // COMBAK secret management
       password: faker.random.alphaNumeric(10),
-      // QUESTION Need more context for the size of API (Pat)
       // NOTE ASSUMTION fixed domain and path e.g. static path up to
-      // here "https://api.lorem.space/image/face" for sanitization (Pat)
+      // here "https://api.lorem.space/image/face" for sanitization this should
+      // be store in the DB for dynamism (Pat)
+      // TODO Store only hash in the DB
       profile_image: `https://api.lorem.space/image/face?w=150&h=150&hash=${faker.random.alphaNumeric(
         8
       )}`,
