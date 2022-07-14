@@ -14,6 +14,8 @@ Since this service might effect the integrity of our financial system we want to
 Authentication
 Cross cloud provider migratable
 Locally dev
+Formal specification
+Centralize secret management integration
 
 ## Get Started
 
