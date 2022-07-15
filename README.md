@@ -36,7 +36,7 @@ yarn dev
 ### TODO
 - [ ] https
 - [ ] paginate multi read?
-- [ ] secret management service for password ()
+- [x] secret management service for password ()
 - [ ] add .node-version
 - [ ] If not serverless then dockerize maybe?
 - [ ] Maybe Gitpod?
@@ -46,7 +46,7 @@ yarn dev
 - [ ] Schema
 - [ ] Cache
 - [ ] API gateway config?
-- [ ] GitOp
+- [ ] GitOp (IaC CI/CD)
 - [ ] CI/CD
 - [ ] Linter?
 - [ ] Commit hook check
