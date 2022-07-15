@@ -55,21 +55,5 @@ yarn dev
 - [ ] Test
 - [ ] Deploy
 
-### Dgraph GraphQL Schema
-
-type User @secret(field: "password") {
-  id: ID!
-  username: String! @id @search(by: [hash])
-  profile_image_hash: String! @id @search(by: [hash])
-  joined_date: DateTime! @search
-	# TODO @hasInverse https://dgraph.io/docs/graphql/schema/graph-links  
-  thirdParty: ImageObjectStorage!
-}
-
-type ImageObjectStorage {
-	# can't use list here Dgraph don't support ordered list
-  domain: String! @search(by: [fulltext])
-  path: String! @search(by: [fulltext])
-}
 
 To Visit App: `http://localhost:3000`
