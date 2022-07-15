@@ -13,8 +13,6 @@ interface UserProps {
 
 export const useUserGenerator = () => {
   const [userinfo, setUserinfo] = useState<UserProps | null>(null)
-console.log(new Date(2019, 0, 1)
-)
   const generate = () => {
     const user: UserProps = {
       // HACK gen uid from frontend (Pat)
