@@ -1,0 +1,3 @@
+[submodule "signup-dgraph-cloud"]
+	path = signup-dgraph-cloud
+	url = https://github.com/SuperCipher/signup-dgraph-cloud
