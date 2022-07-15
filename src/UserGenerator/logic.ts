@@ -13,10 +13,13 @@ interface UserProps {
 
 export const useUserGenerator = () => {
   const [userinfo, setUserinfo] = useState<UserProps | null>(null)
-
+console.log(new Date(2019, 0, 1)
+)
   const generate = () => {
     const user: UserProps = {
       // HACK gen uid from frontend (Pat)
+      // NOTE We will gen this on the backend and will not follow this format
+      // for optimization purposes (Pat)
       id: `user${cuid()}`,
       // TODO sanitize username (Pat)
       // NOTE ASSUMTION: derived username password sanitization constraint
@@ -30,11 +33,16 @@ export const useUserGenerator = () => {
       // here "https://api.lorem.space/image/face" for sanitization this should
       // be store in the DB for dynamism (Pat)
       // TODO Store only hash in the DB
+      // HACK This data should not be from frontend (Pat)
       profile_image: `https://api.lorem.space/image/face?w=150&h=150&hash=${faker.random.alphaNumeric(
         8
       )}`,
       // HACK gen date from frontend (Pat)
+      // NOTE new Date(1546275600000) // Date Tue Jan 01 2019 00:00:00 GMT+0700 (Indochina Time)
+      // temp0.valueOf() // 1546275600000 store as posix
+      // NOTE We will gen this on the backend (Pat)
       joined_date: randomDate(new Date(2019, 0, 1), new Date()),
+
     }
 
     setUserinfo(user)
