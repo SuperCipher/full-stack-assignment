@@ -43,18 +43,15 @@ export const useUserGenerator = () => {
       // NOTE We will gen this on the backend and will not follow this format
       // for optimization purposes (Pat)
       id: `user${cuid()}`,
-      // TODO sanitize username (Pat)
       // NOTE ASSUMTION: derived username password sanitization constraint
       // from faker-js lib (Pat)
       // username : https://github.com/faker-js/faker/blob/3c108b4bcfab73c3eaee856758271fd09da4a988/src/modules/internet/index.ts#L129
       // password : https://github.com/faker-js/faker/blob/3c108b4bcfab73c3eaee856758271fd09da4a988/src/modules/random/index.ts#L320
       username: faker.internet.userName(),
-      // COMBAK secret management
       password: faker.random.alphaNumeric(10),
       // NOTE ASSUMTION fixed domain and path e.g. static path up to
       // here "https://api.lorem.space/image/face" for sanitization this should
       // be store in the DB for dynamism (Pat)
-      // TODO Store only hash in the DB
       // HACK This data should not be from frontend (Pat)
       profile_image: `https://api.lorem.space/image/face?w=150&h=150&hash=${profile_image_hash}`,
       // HACK gen date from frontend (Pat)
@@ -64,9 +61,7 @@ export const useUserGenerator = () => {
       joined_date: randomDate(new Date(2019, 0, 1), new Date()),
 
     }
-    // HACK joined_date require by dgraph generated graphql just add any date
-    // to fulfilled schemas required fields, the backend will generate the
-    // correct date eventually.
+
     operationsDoc = `
       mutation CustomMutation {
         newUser(username: "${user.username}", profile_image_hash: "${profile_image_hash}", password: "${user.password}")
