@@ -43,7 +43,7 @@ yarn dev
 - [ ] open API
 - [ ] more readme
 - [ ] Diagram
-- [ ] Schema
+- [x] Schema
 - [ ] Cache
 - [ ] API gateway config?
 - [ ] GitOp (IaC CI/CD)
