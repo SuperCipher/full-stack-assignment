@@ -11,7 +11,7 @@ interface UserProps {
   joined_date: Date
 }
 
-async function fetchGraphQL(operationsDoc: any, operationName: any, variables:any) {
+async function fetchGraphQL(operationsDoc: any, operationName: any, variables: any) {
   const result = await fetch(
     "https://green-feather-500032.ap-south-1.aws.cloud.dgraph.io/graphql",
     {
@@ -64,14 +64,12 @@ export const useUserGenerator = () => {
       joined_date: randomDate(new Date(2019, 0, 1), new Date()),
 
     }
+    // HACK joined_date require by dgraph generated graphql just add any date
+    // to fulfilled schemas required fields, the backend will generate the
+    // correct date eventually.
     operationsDoc = `
       mutation CustomMutation {
-        addUser(input: [{username: "${user.username}", profile_image_hash: "${profile_image_hash}", thirdParty: {domain: "api.lorem.space", path: "image/face"}, password: "${user.password}"}]) {
-          user {
-            id
-            username
-          }
-        }
+        newUser(username: "${user.username}", profile_image_hash: "${profile_image_hash}", password: "${user.password}")
       }
       query MyQuery {
         queryUser(first: 10) {
@@ -94,7 +92,7 @@ export const useUserGenerator = () => {
 
       if (errors) {
         // handle those errors like a pro
-        console.error(errors);
+        console.error(JSON.stringify(errors));
       }
 
       // do something great with this precious data
@@ -111,6 +109,7 @@ export const useUserGenerator = () => {
     }
 
     async function startExecuteCustomMutation() {
+      // TODO: try catch
       const { errors, data } = await executeCustomMutation();
 
       if (errors) {
