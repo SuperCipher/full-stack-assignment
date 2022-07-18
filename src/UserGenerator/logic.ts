@@ -12,6 +12,7 @@ interface UserProps {
 }
 
 async function fetchGraphQL(operationsDoc: any, operationName: any, variables: any) {
+  // TODO: environment variables this
   const result = await fetch(
     "https://green-feather-500032.ap-south-1.aws.cloud.dgraph.io/graphql",
     {
@@ -30,7 +31,6 @@ async function fetchGraphQL(operationsDoc: any, operationName: any, variables: a
 
   return await result.json();
 }
-
 
 
 export const useUserGenerator = () => {
@@ -82,19 +82,6 @@ export const useUserGenerator = () => {
       );
     }
 
-    async function startFetchMyQuery() {
-      const { errors, data } = await fetchMyQuery();
-
-      if (errors) {
-        // handle those errors like a pro
-        console.error(JSON.stringify(errors));
-      }
-
-      // do something great with this precious data
-      console.log(data);
-    }
-
-
     function executeCustomMutation() {
       return fetchGraphQL(
         operationsDoc,
@@ -103,9 +90,9 @@ export const useUserGenerator = () => {
       );
     }
 
-    async function startExecuteCustomMutation() {
+    async function executehandler(executeFunction: Function) {
       // TODO: try catch
-      const { errors, data } = await executeCustomMutation();
+      const { errors, data } = await executeFunction();
 
       if (errors) {
         // handle those errors like a pro
@@ -116,9 +103,8 @@ export const useUserGenerator = () => {
       console.log(data);
     }
 
-    startExecuteCustomMutation();
-
-    startFetchMyQuery();
+    executehandler(executeCustomMutation);
+    executehandler(fetchMyQuery);
 
     setUserinfo(user)
   }
