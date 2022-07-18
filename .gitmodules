@@ -1,3 +1,6 @@
 [submodule "signup-dgraph-cloud"]
 	path = signup-dgraph-cloud
 	url = https://github.com/SuperCipher/signup-dgraph-cloud
+[submodule "band-protocol-frontend-assignment"]
+	path = band-protocol-frontend-assignment
+	url = https://github.com/SuperCipher/band-protocol-frontend-assignment
