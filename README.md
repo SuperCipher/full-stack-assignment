@@ -23,11 +23,21 @@ Formal specification
 Centralize secret management integration
 
 ## Get Started
+Go to
 
 Frontend user signup mock https://band-signup.leiden.capital
+
 Frontend table list https://band-fe.leiden.capital
+
 Graphql endpoint https://green-feather-500032.ap-south-1.aws.cloud.dgraph.io/graphql
+
 Graphql documentation https://spectaql.leiden.capital/
+
+## Submodule repo
+
+https://github.com/SuperCipher/band-protocol-frontend-assignment (master)
+
+https://github.com/SuperCipher/signup-dgraph-cloud (master)
 
 ### Installation:
 
